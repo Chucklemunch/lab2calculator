@@ -8,14 +8,14 @@
 
     <TextView
         android:id="@+id/calcResult"
-        android:layout_width="214dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="327dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="164dp"
         android:layout_marginBottom="55dp"
         android:text="RESULT"
         android:textAlignment="center"
-        android:textSize="40dp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/newCalc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,11 +24,11 @@
         android:id="@+id/newCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
         android:layout_marginBottom="221dp"
-        android:text="New Calculation"
         android:onClick="goToMainActivity"
+        android:text="New Calculation"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/calcResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calcResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>

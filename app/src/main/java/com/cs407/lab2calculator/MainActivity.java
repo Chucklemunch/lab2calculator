@@ -24,39 +24,50 @@ public class MainActivity extends AppCompatActivity {
         EditText int2 = (EditText) findViewById(R.id.int2);
         Log.d("NUMS", int1.getText() + ", " + int2.getText());
 
-        operand1 = Integer.parseInt(int1.getText().toString());
-        operand2 = Integer.parseInt(int2.getText().toString());
-        int viewId = view.getId();
+        // Makes sure inputs are integers
+        try {
+            operand1 = Integer.parseInt(int1.getText().toString());
+            operand2 = Integer.parseInt(int2.getText().toString());
+            int viewId = view.getId();
 
-        if (viewId == buttonId[0]) {
-            Log.d("Button", "ADD");
-            result = operand1 + operand2;
-        } else if (viewId == buttonId[1]) {
-            Log.d("Button", "SUB");
-            result = operand1 - operand2;
-        } else if (viewId == buttonId[2]) {
-            Log.d("Button", "MULT");
-            result = operand1.intValue() * operand2.intValue();
-        } else if (viewId == buttonId[3]) {
-            Log.d("Button", "DIV");
-            if (operand2.intValue() == 0) {
-                resultString = "DIVIDE BY ZERO ERROR";
-            } else {
-                result = operand1 / operand2;
+            if (viewId == buttonId[0]) {
+                Log.d("Button", "ADD");
+                result = operand1 + operand2;
+            } else if (viewId == buttonId[1]) {
+                Log.d("Button", "SUB");
+                result = operand1 - operand2;
+            } else if (viewId == buttonId[2]) {
+                Log.d("Button", "MULT");
+                result = operand1.intValue() * operand2.intValue();
+            } else if (viewId == buttonId[3]) {
+                Log.d("Button", "DIV");
+                if (operand2.intValue() == 0) {
+                    resultString = "DIVIDE BY ZERO ERROR";
+                } else {
+                    result = operand1 / operand2;
+                }
             }
+
+            if (resultString.equals("")) {
+                resultString = result.toString();
+            }
+
+            Log.d("RESULT", resultString);
+
+
+            int1.setText("");
+            int2.setText("");
+
+            // Views results
+            goToResult(resultString);
+        } catch (Exception e) {
+            Log.d("ERROR", (e.getMessage()));
+            int1.setText("Input must be integral");
+            int2.setText("Input must be integral");
         }
 
-        if (resultString.equals("")) {
-            resultString = result.toString();
-        }
-        Log.d("RESULT", resultString);
 
-        // Resets inputs
-        int1.setText("Enter an integer");
-        int2.setText("Enter an integer");
 
-        // Views results
-        goToResult(resultString);
     }
 
     public void goToResult(String result) {
